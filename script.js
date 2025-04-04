@@ -20,13 +20,21 @@ class Minesweeper {
     }
 
     initializeGame() {
-        // Hide any visible overlays
-        document.querySelectorAll('.game-overlay').forEach(overlay => {
-            overlay.classList.remove('show');
-        });
+        // Reset game state
+        this.gameOver = false;
+        this.firstClick = true;
+        this.mines = [];
+        this.revealed = new Set();
+        this.flagged = new Set();
+        this.minesLeft = this.totalMines;
+        
+        // Reset UI
+        document.getElementById('game-overlay').classList.remove('show');
         this.createBoard();
-        this.updateMinesCount();
+        
+        // Reset timer and mine count
         this.resetTimer();
+        this.updateMinesCount();
     }
 
     createBoard() {
@@ -105,8 +113,7 @@ class Minesweeper {
             this.gameOver = true;
             this.revealAllMines();
             this.stopTimer();
-            const loseOverlay = document.getElementById('lose-overlay');
-            loseOverlay.classList.add('show');
+            this.showGameOver(false);
             return;
         }
 
@@ -169,13 +176,18 @@ class Minesweeper {
 
     checkWin() {
         const unrevealedCells = document.querySelectorAll('.cell:not(.revealed)');
-        if (unrevealedCells.length === this.mines) {
+        if (unrevealedCells.length === this.totalMines) {
             this.gameOver = true;
-            clearInterval(this.timer);
-            // Show win overlay instead of alert
-            const winOverlay = document.getElementById('win-overlay');
-            winOverlay.classList.add('show');
+            this.stopTimer();
+            this.showGameOver(true);
         }
+    }
+
+    showGameOver(isWin) {
+        const overlay = document.getElementById('game-overlay');
+        const resultImage = document.getElementById('result-image');
+        resultImage.src = isWin ? 'Asset/youwon.svg' : 'Asset/gameover.svg';
+        overlay.classList.add('show');
     }
 
     startTimer() {
@@ -210,11 +222,8 @@ class Minesweeper {
             this.initializeGame();
         });
 
-        // Add event listeners for Play Again buttons
-        document.querySelectorAll('.play-again-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                this.initializeGame();
-            });
+        document.querySelector('.play-again-btn').addEventListener('click', () => {
+            this.initializeGame();
         });
     }
 }
