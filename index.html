@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeowSweeper</title>
     <link rel="stylesheet" href="/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <base href="/">
 </head>
 <body>
@@ -26,17 +26,32 @@
             </div>
         </div>
         <div class="game-legend">
-            <div class="legend-item">
-                <div class="legend-image" style="background-image: url('/Asset/Cat-1.svg')"></div>
-                <span>= 1 mine nearby</span>
+            <div class="legend-controls">
+                <div class="control-item">
+                    <span>Click mode: <span id="current-mode">Reveal</span></span>
+                </div>
+                <div class="control-item">
+                    <span>Toggle with button</span>
+                    <button id="mode-toggle" class="mode-toggle" title="Toggle between reveal and flag mode">
+                        <div class="mode-icon"></div>
+                    </button>
+                </div>
+                
             </div>
-            <div class="legend-item">
-                <div class="legend-image" style="background-image: url('/Asset/Cat-2.svg')"></div>
-                <span>= 2 mines nearby</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-image" style="background-image: url('/Asset/Cat-3.svg')"></div>
-                <span>= 3 mines nearby</span>
+            <div class="legend-divider"></div>
+            <div class="cat-legends">
+                <div class="legend-item">
+                    <div class="legend-image" style="background-image: url('/Asset/Cat-1.svg')"></div>
+                    <span>1 mine nearby</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-image" style="background-image: url('/Asset/Cat-2.svg')"></div>
+                    <span>2 mines nearby</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-image" style="background-image: url('/Asset/Cat-3.svg')"></div>
+                    <span>3 mines nearby</span>
+                </div>
             </div>
         </div>
     </div>

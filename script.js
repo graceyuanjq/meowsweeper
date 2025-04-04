@@ -8,6 +8,7 @@ class Minesweeper {
         this.firstClick = true;
         this.timer = 0;
         this.timerInterval = null;
+        this.isFlagMode = false;
         
         // Fixed game settings
         this.rows = 10; // Increased from 8 to 10 rows
@@ -101,24 +102,30 @@ class Minesweeper {
     }
 
     handleClick(row, col) {
-        if (this.gameOver || this.flagged.has(`${row},${col}`)) return;
+        if (this.gameOver) return;
 
-        if (this.firstClick) {
-            this.firstClick = false;
-            this.placeMines(row, col);
-            this.startTimer();
+        if (this.isFlagMode) {
+            this.handleFlag(row, col);
+        } else {
+            if (this.flagged.has(`${row},${col}`)) return;
+
+            if (this.firstClick) {
+                this.firstClick = false;
+                this.placeMines(row, col);
+                this.startTimer();
+            }
+
+            if (this.mines.includes(`${row},${col}`)) {
+                this.gameOver = true;
+                this.revealAllMines();
+                this.stopTimer();
+                this.showGameOver(false);
+                return;
+            }
+
+            this.revealCell(row, col);
+            this.checkWin();
         }
-
-        if (this.mines.includes(`${row},${col}`)) {
-            this.gameOver = true;
-            this.revealAllMines();
-            this.stopTimer();
-            this.showGameOver(false);
-            return;
-        }
-
-        this.revealCell(row, col);
-        this.checkWin();
     }
 
     handleRightClick(row, col) {
@@ -217,6 +224,39 @@ class Minesweeper {
         document.getElementById('mines-left').textContent = this.minesLeft;
     }
 
+    handleFlag(row, col) {
+        if (this.revealed.has(`${row},${col}`)) return;
+
+        const cell = document.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
+        const cellKey = `${row},${col}`;
+
+        if (this.flagged.has(cellKey)) {
+            this.flagged.delete(cellKey);
+            cell.classList.remove('flagged');
+            this.minesLeft++;
+        } else {
+            this.flagged.add(cellKey);
+            cell.classList.add('flagged');
+            this.minesLeft--;
+        }
+
+        this.updateMinesCount();
+    }
+
+    toggleMode() {
+        this.isFlagMode = !this.isFlagMode;
+        const modeToggle = document.getElementById('mode-toggle');
+        const currentMode = document.getElementById('current-mode');
+        
+        if (this.isFlagMode) {
+            modeToggle.classList.add('flag-mode');
+            currentMode.textContent = 'Flag';
+        } else {
+            modeToggle.classList.remove('flag-mode');
+            currentMode.textContent = 'Reveal';
+        }
+    }
+
     setupEventListeners() {
         document.getElementById('reset-button').addEventListener('click', () => {
             this.initializeGame();
@@ -224,6 +264,10 @@ class Minesweeper {
 
         document.querySelector('.play-again-btn').addEventListener('click', () => {
             this.initializeGame();
+        });
+
+        document.getElementById('mode-toggle').addEventListener('click', () => {
+            this.toggleMode();
         });
     }
 }
