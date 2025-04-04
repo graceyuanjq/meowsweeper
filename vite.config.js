@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
 export default defineConfig({
-  base: './',
+  base: '',
   server: {
     port: 4000,
     open: true,
@@ -15,6 +15,9 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html')
       }
-    }
-  }
+    },
+    assetsInlineLimit: 0,
+    copyPublicDir: true
+  },
+  publicDir: 'Asset'
 }) 
