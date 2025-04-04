@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeowSweeper</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="game-title">MeowSweeper</h1>
+    <div class="game-container">
+        <div class="game-header">
+            <div id="mines-left">10</div>
+            <button id="reset-button">
+                <div class="sprite"></div>
+            </button>
+            <div id="time">0</div>
+        </div>
+        <div id="game-board" class="game-board"></div>
+        <div id="win-overlay" class="game-overlay">
+            <div class="overlay-content">
+                <div class="overlay-image win-image"></div>
+                <button class="play-again-btn">Play Again</button>
+            </div>
+        </div>
+        <div id="lose-overlay" class="game-overlay">
+            <div class="overlay-content">
+                <div class="overlay-image lose-image"></div>
+                <button class="play-again-btn">Play Again</button>
+            </div>
+        </div>
+        <div class="game-legend">
+            <div class="legend-item">
+                <div class="legend-image" style="background-image: url('Asset/Cat-1.svg')"></div>
+                <span>= 1 mine nearby</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-image" style="background-image: url('Asset/Cat-2.svg')"></div>
+                <span>= 2 mines nearby</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-image" style="background-image: url('Asset/Cat-3.svg')"></div>
+                <span>= 3 mines nearby</span>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
