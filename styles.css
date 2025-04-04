@@ -354,6 +354,7 @@ body {
 .control-item {
     display: flex;
     align-items: center;
+    gap: 8px;
     font-size: 0.9rem;
     font-weight: 500;
     color: #666;
@@ -570,16 +571,16 @@ body {
 }
 
 .mode-icon {
-    width: 30px;
-    height: 30px;
-    background-image: url('../Asset/reveal-mode.svg');
-    background-size: 30px 30px;
+    width: 20px;
+    height: 20px;
+    background-image: url('./Asset/reveal-mode.svg');
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .mode-toggle.flag-mode .mode-icon {
-    background-image: url('../Asset/flag-mode.svg');
+    background-image: url('./Asset/flag-mode.svg');
 }
 
 #current-mode {
