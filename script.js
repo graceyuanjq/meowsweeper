@@ -244,16 +244,18 @@ class Minesweeper {
     }
 
     toggleMode() {
-        this.isFlagMode = !this.isFlagMode;
         const modeToggle = document.getElementById('mode-toggle');
-        const currentMode = document.getElementById('current-mode');
+        const currentModeText = document.getElementById('current-mode');
+        const isFlagMode = modeToggle.classList.contains('flag-mode');
         
-        if (this.isFlagMode) {
-            modeToggle.classList.add('flag-mode');
-            currentMode.textContent = 'Flag';
-        } else {
+        if (isFlagMode) {
             modeToggle.classList.remove('flag-mode');
-            currentMode.textContent = 'Reveal';
+            currentModeText.textContent = 'Reveal';
+            currentMode = 'reveal';
+        } else {
+            modeToggle.classList.add('flag-mode');
+            currentModeText.textContent = 'Flag';
+            currentMode = 'flag';
         }
     }
 

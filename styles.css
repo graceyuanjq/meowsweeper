@@ -555,32 +555,42 @@ body {
 
 /* Mode toggle button styles */
 .mode-toggle {
-    width: 30px;
-    height: 30px;
-    border: 2px solid #b1b1b1;
-    border-radius: 2px;
-    background: #ffffff;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    background: white;
     cursor: pointer;
-    padding: 4px;
-    overflow: hidden;
-    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-left: 12px;
+    justify-content: center;
+    padding: 8px;
+    margin-left: 8px;
+}
+
+.mode-toggle:hover {
+    background: #f0f0f0;
 }
 
 .mode-icon {
     width: 20px;
     height: 20px;
-    background-image: url('./Asset/reveal-mode.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
-.mode-toggle.flag-mode .mode-icon {
-    background-image: url('./Asset/flag-mode.svg');
+.reveal-icon {
+    display: block;
+}
+
+.flag-icon {
+    display: none;
+}
+
+.mode-toggle.flag-mode .reveal-icon {
+    display: none;
+}
+
+.mode-toggle.flag-mode .flag-icon {
+    display: block;
 }
 
 #current-mode {
