@@ -17,7 +17,12 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html')
       },
       output: {
-        assetFileNames: 'assets/[name][extname]',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name.endsWith('.svg')) {
+            return 'Asset/[name][extname]';
+          }
+          return 'assets/[name][extname]';
+        },
         chunkFileNames: 'assets/[name].js',
         entryFileNames: 'assets/[name].js'
       }

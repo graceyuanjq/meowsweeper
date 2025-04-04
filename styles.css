@@ -559,9 +559,9 @@ body {
     height: 30px;
     border: 2px solid #b1b1b1;
     border-radius: 2px;
-    background: none;
+    background: #ffffff;
     cursor: pointer;
-    padding: 0;
+    padding: 4px;
     overflow: hidden;
     position: relative;
     display: flex;
