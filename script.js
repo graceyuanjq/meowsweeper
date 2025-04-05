@@ -194,6 +194,7 @@ class Minesweeper {
         const overlay = document.getElementById('game-overlay');
         const resultImage = document.getElementById('result-image');
         resultImage.src = isWin ? 'Asset/youwon.svg' : 'Asset/gameover.svg';
+        resultImage.alt = isWin ? 'You Won!' : 'Game Over';
         overlay.classList.add('show');
     }
 

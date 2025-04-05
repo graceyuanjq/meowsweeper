@@ -572,14 +572,27 @@ body {
 .mode-icon {
     width: 24px;
     height: 24px;
-    background-image: url('./Asset/reveal-mode.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s;
 }
 
-.mode-toggle.flag-mode .mode-icon {
-    background-image: url('./Asset/flag-mode.svg');
+.reveal-icon {
+    opacity: 1;
+}
+
+.flag-icon {
+    opacity: 0;
+}
+
+.mode-toggle.flag-mode .reveal-icon {
+    opacity: 0;
+}
+
+.mode-toggle.flag-mode .flag-icon {
+    opacity: 1;
 }
 
 #current-mode {
