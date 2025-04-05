@@ -193,7 +193,7 @@ class Minesweeper {
     showGameOver(isWin) {
         const overlay = document.getElementById('game-overlay');
         const resultImage = document.getElementById('result-image');
-        resultImage.src = isWin ? 'Asset/youwon.svg' : 'Asset/gameover.svg';
+        resultImage.src = isWin ? './Asset/youwon.svg' : './Asset/gameover.svg';
         resultImage.alt = isWin ? 'You Won!' : 'Game Over';
         overlay.classList.add('show');
     }
@@ -252,11 +252,9 @@ class Minesweeper {
         if (this.isFlagMode) {
             modeToggle.classList.add('flag-mode');
             currentMode.textContent = 'Flag';
-            console.log('Switched to flag mode'); // Debug log
         } else {
             modeToggle.classList.remove('flag-mode');
             currentMode.textContent = 'Reveal';
-            console.log('Switched to reveal mode'); // Debug log
         }
     }
 
@@ -270,11 +268,13 @@ class Minesweeper {
         });
 
         const modeToggle = document.getElementById('mode-toggle');
-        modeToggle.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent any default button behavior
-            this.toggleMode();
-            console.log('Toggle button clicked'); // Debug log
-        });
+        if (modeToggle) {
+            modeToggle.addEventListener('click', () => {
+                this.toggleMode();
+            });
+        } else {
+            console.error('Mode toggle button not found');
+        }
     }
 }
 
