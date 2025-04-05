@@ -42,6 +42,7 @@ class Minesweeper {
         const gameBoard = document.getElementById('game-board');
         gameBoard.innerHTML = '';
         gameBoard.style.gridTemplateColumns = `repeat(${this.cols}, 1fr)`;
+        gameBoard.style.gridTemplateRows = `repeat(${this.rows}, 1fr)`;
         
         this.board = Array(this.rows).fill().map(() => Array(this.cols).fill(0));
         this.mines = [];
