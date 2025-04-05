@@ -1,23 +1,50 @@
 class Minesweeper {
     constructor() {
-        this.board = [];
-        this.mines = [];
-        this.revealed = new Set();
-        this.flagged = new Set();
-        this.gameOver = false;
-        this.firstClick = true;
-        this.timer = 0;
-        this.timerInterval = null;
-        this.isFlagMode = false;
-        
-        // Fixed game settings
-        this.rows = 10; // Increased from 8 to 10 rows
-        this.cols = 8;
-        this.totalMines = Math.floor(this.rows * this.cols * 0.15); // 15% of cells are mines
-        this.minesLeft = this.totalMines;
+        // Add error handling for initialization
+        try {
+            this.board = [];
+            this.mines = [];
+            this.revealed = new Set();
+            this.flagged = new Set();
+            this.gameOver = false;
+            this.firstClick = true;
+            this.timer = 0;
+            this.timerInterval = null;
+            this.isFlagMode = false;
+            
+            // Fixed game settings
+            this.rows = 10;
+            this.cols = 8;
+            this.totalMines = Math.floor(this.rows * this.cols * 0.15);
+            this.minesLeft = this.totalMines;
 
-        this.initializeGame();
-        this.setupEventListeners();
+            // Ensure DOM is ready before initializing
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    this.initializeGame();
+                    this.setupEventListeners();
+                });
+            } else {
+                this.initializeGame();
+                this.setupEventListeners();
+            }
+        } catch (error) {
+            console.error('Failed to initialize game:', error);
+            this.showError('Failed to initialize game. Please refresh the page.');
+        }
+    }
+
+    showError(message) {
+        const overlay = document.getElementById('game-overlay');
+        const overlayContent = overlay.querySelector('.overlay-content');
+        overlayContent.innerHTML = `
+            <div style="color: #ff4444; text-align: center; padding: 20px;">
+                <h2>Error</h2>
+                <p>${message}</p>
+                <button class="play-again-btn" onclick="window.location.reload()">Retry</button>
+            </div>
+        `;
+        overlay.classList.add('show');
     }
 
     initializeGame() {
@@ -191,10 +218,18 @@ class Minesweeper {
     }
 
     showGameOver(isWin) {
-        const overlay = document.getElementById('game-overlay');
-        const resultImage = document.getElementById('result-image');
-        resultImage.src = isWin ? 'Asset/youwon.svg' : 'Asset/gameover.svg';
-        overlay.classList.add('show');
+        try {
+            const overlay = document.getElementById('game-overlay');
+            const resultImage = document.getElementById('result-image');
+            resultImage.src = isWin ? './Asset/youwon.svg' : './Asset/gameover.svg';
+            resultImage.onerror = () => {
+                resultImage.style.display = 'none';
+                resultImage.nextElementSibling.textContent = isWin ? 'You Won!' : 'Game Over';
+            };
+            overlay.classList.add('show');
+        } catch (error) {
+            console.error('Failed to show game over screen:', error);
+        }
     }
 
     startTimer() {

@@ -17,10 +17,15 @@
             </button>
             <div id="time">0</div>
         </div>
-        <div id="game-board" class="game-board"></div>
+        <div id="game-board" class="game-board">
+            <div id="loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                <p>Loading game...</p>
+            </div>
+        </div>
         <div id="game-overlay" class="game-overlay">
             <div class="overlay-content">
                 <img id="result-image" class="result-image" src="" alt="Game Result">
+                <p class="result-text"></p>
                 <button class="play-again-btn">Play Again</button>
             </div>
         </div>
@@ -53,6 +58,6 @@
             </div>
         </div>
     </div>
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
 </body>
 </html> 
