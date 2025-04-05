@@ -280,15 +280,15 @@ body {
 }
 
 .cell[data-number="1"]::after {
-    background-image: url('../meowsweeper/Asset/Cat-1.svg');
+    background-image: url('/meowsweeper/Asset/Cat-1.svg');
 }
 
 .cell[data-number="2"]::after {
-    background-image: url('../meowsweeper/Asset/Cat-2.svg');
+    background-image: url('/meowsweeper/Asset/Cat-2.svg');
 }
 
 .cell[data-number="3"]::after {
-    background-image: url('../meowsweeper/Asset/Cat-3.svg');
+    background-image: url('/meowsweeper/Asset/Cat-3.svg');
 }
 
 /* Number colors - hide numbers when using cat images */
