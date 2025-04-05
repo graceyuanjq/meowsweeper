@@ -576,23 +576,19 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: opacity 0.2s;
+    display: none;
 }
 
 .reveal-icon {
-    opacity: 1;
-}
-
-.flag-icon {
-    opacity: 0;
+    display: block;
 }
 
 .mode-toggle.flag-mode .reveal-icon {
-    opacity: 0;
+    display: none;
 }
 
 .mode-toggle.flag-mode .flag-icon {
-    opacity: 1;
+    display: block;
 }
 
 #current-mode {
