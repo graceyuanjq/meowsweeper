@@ -87,7 +87,7 @@ body {
 .sprite {
     width: 35px;
     height: 35px;
-    background-image: url('../Asset/Sprint1.png');
+    background-image: url('./Asset/Sprint1.png');
     background-size: 35px 35px;
     background-repeat: no-repeat;
     background-position: center;
@@ -105,7 +105,7 @@ body {
 .game-board {
     position: relative;
     display: grid;
-    background-color: #ddd;
+    background-color: transparent;
     width: 100%;
     height: 0;
     padding-bottom: 125%;
@@ -231,6 +231,7 @@ body {
     user-select: none;
     transition: background-color 0.2s;
     z-index: 1;
+    background-color: transparent;
 }
 
 .cell:hover::before {
@@ -256,7 +257,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../Asset/Bomb.png');
+    background-image: url('./Asset/Bomb.png');
     background-size: 60%;
     background-repeat: no-repeat;
     background-position: center;
@@ -280,15 +281,15 @@ body {
 }
 
 .cell[data-number="1"]::after {
-    background-image: url('../Asset/Cat-1.svg');
+    background-image: url('./Asset/Cat-1.svg');
 }
 
 .cell[data-number="2"]::after {
-    background-image: url('../Asset/Cat-2.svg');
+    background-image: url('./Asset/Cat-2.svg');
 }
 
 .cell[data-number="3"]::after {
-    background-image: url('../Asset/Cat-3.svg');
+    background-image: url('./Asset/Cat-3.svg');
 }
 
 /* Number colors - hide numbers when using cat images */
