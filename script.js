@@ -221,7 +221,7 @@ class Minesweeper {
         try {
             const overlay = document.getElementById('game-overlay');
             const resultImage = document.getElementById('result-image');
-            resultImage.src = isWin ? './Asset/youwon.svg' : './Asset/gameover.svg';
+            resultImage.src = isWin ? '../meowsweeper/Asset/youwon.svg' : '../meowsweeper/Asset/gameover.svg';
             resultImage.onerror = () => {
                 resultImage.style.display = 'none';
                 resultImage.nextElementSibling.textContent = isWin ? 'You Won!' : 'Game Over';
