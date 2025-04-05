@@ -272,7 +272,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: 50%;
+    background-size: 60%;
     background-repeat: no-repeat;
     background-position: center;
     z-index: 2;
@@ -292,6 +292,12 @@ body {
 }
 
 /* Number colors - hide numbers when using cat images */
+.cell[data-number="1"].revealed::after,
+.cell[data-number="2"].revealed::after,
+.cell[data-number="3"].revealed::after {
+    opacity: 1;
+}
+
 .cell[data-number="1"]::before,
 .cell[data-number="2"]::before,
 .cell[data-number="3"]::before {
