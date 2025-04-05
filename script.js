@@ -193,8 +193,7 @@ class Minesweeper {
     showGameOver(isWin) {
         const overlay = document.getElementById('game-overlay');
         const resultImage = document.getElementById('result-image');
-        resultImage.src = isWin ? './Asset/youwon.svg' : './Asset/gameover.svg';
-        resultImage.alt = isWin ? 'You Won!' : 'Game Over';
+        resultImage.src = isWin ? 'Asset/youwon.svg' : 'Asset/gameover.svg';
         overlay.classList.add('show');
     }
 
@@ -267,14 +266,9 @@ class Minesweeper {
             this.initializeGame();
         });
 
-        const modeToggle = document.getElementById('mode-toggle');
-        if (modeToggle) {
-            modeToggle.addEventListener('click', () => {
-                this.toggleMode();
-            });
-        } else {
-            console.error('Mode toggle button not found');
-        }
+        document.getElementById('mode-toggle').addEventListener('click', () => {
+            this.toggleMode();
+        });
     }
 }
 
