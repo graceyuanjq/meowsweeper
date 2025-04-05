@@ -570,10 +570,10 @@ body {
 }
 
 .mode-icon {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     background-image: url('./Asset/reveal-mode.svg');
-    background-size: 30px 30px;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
